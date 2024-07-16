@@ -10,6 +10,9 @@ jobs:
   snyk:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Use Snyk IaC Scan Action
         uses: douglasmendeslda/gha-synk-scan@v1.1
         with:
