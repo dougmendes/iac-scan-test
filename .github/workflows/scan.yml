@@ -1,20 +1,19 @@
-name: Snyk IaC Scan
+name: Use Comment Action
 
 on:
   pull_request:
-  push:
-    branches:
-      - main
+    types: [opened, synchronize]
 
 jobs:
-  snyk:
+  comment:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
-      - name: Use Snyk IaC Scan Action
-        uses: douglasmendeslda/gha-synk-scan@delta
+      - name: Comment on PR
+        uses: douglasmendeslda/gha-synk@main  # Substitua 'owner/repo' pelo dono e nome do repositório onde a Action está hospedada
         with:
-          snyk_token: ${{ secrets.SNYK_TOKEN }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-number: ${{ github.event.pull_request.number }}
