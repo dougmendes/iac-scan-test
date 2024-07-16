@@ -1,0 +1,17 @@
+name: Snyk IaC Scan
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  snyk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Snyk IaC Scan Action
+        uses: douglasmendeslda/gha-synk-scan@v1
+        with:
+          snyk_token: ${{ secrets.SNYK_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
