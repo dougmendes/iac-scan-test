@@ -16,7 +16,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+        
+      - name: Checkout reusable action repo
+        uses: actions/checkout@v4
+        with:
+          repository:  douglasmendeslda/gha-synk
+          path: reusable-action-repo
+          
       - name: Comment on PR
         uses: douglasmendeslda/gha-synk@main  # Substitua 'owner/repo' pelo dono e nome do repositório onde a Action está hospedada
         with:
