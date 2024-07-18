@@ -17,8 +17,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         
-      - name: Checkout reusable action repo
-        uses: actions/checkout@v4
+      - name: Run Snyk IaC
+        uses: douglasmendeslda/gha-synk@main  
         with:
-          repository:  douglasmendeslda/gha-synk
-          path: reusable-action-repo
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          snyk-token: ${{ secrets.SNYK_TOKEN }}
+          pr-number: ${{ github.event.pull_request.number }}
